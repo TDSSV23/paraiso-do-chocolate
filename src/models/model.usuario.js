@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import {con} from "../config/databese.js";
+import {con} from "../config/database.js";
 
 
 class   UsuarioModel {
