@@ -5,5 +5,4 @@ const routeUsuario = Router();
 
 routeUsuario.get("/usuarios", UsuarioController.getAllUsuarios);
 
-
 export default routeUsuario;
