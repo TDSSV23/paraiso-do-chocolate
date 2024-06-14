@@ -1,0 +1,29 @@
+{
+    "id_usuario": 3,
+    "nome": "Marcella",
+    "email": "marcellavizona@gmail.com",
+    "fone": "(17) 99999-9999",
+    "end_logradouro": "Rua Alemanha ",
+    "end_numero": "1482",
+    "end_bairro": "Parque das Nações",
+    "end_cidade": "Votuporanga",
+    "end_uf": "SP",
+    "end_cep": "15500000",
+    "total": 36.90,
+
+    "itens":[
+
+        {
+            "Id_produto": 2,
+            "quantidade": 1,
+            "valor_unitario": 12.00
+        },
+
+        {
+            "Id_produto": 4,
+            "quantidade": 1,
+            "valor_unitario": 24.90
+        }
+    ]
+}
+

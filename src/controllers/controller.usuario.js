@@ -6,11 +6,11 @@ class UsuarioController{
            UsuarioModel.getAllUsuarios(function(err, result){
             if(err){
                 console.error(err);
-                return res.status(500).json( { error: "Ocorreu um erro ao buscar os usuários." } );
+                return res.status(500).json( { error: "Erro ao buscar os usuário." } );
             }
 
             if (!result[0]){
-                return res.status(404).json( { message: "Não foram encontrados usuários." } );
+                return res.status(404).json( { message: "Não foi encontrado nenhum usuário" } );
             }
 
             return res.status(200).json(result);
@@ -34,7 +34,7 @@ class UsuarioController{
             UsuarioModel.createUsuario(nome, email, senha, function(err, result){
               if(err){
                 console.error('Erro ao cadastrar usuário: ', err);
-                return res.status(500).json( {error: "Ocorreu um erro ao cadastrar o usuário."} );
+                return res.status(500).json( {error: "Erro ao cadastrar usuário."} );
               }  
 
               return res.status(201).json( {
@@ -61,7 +61,7 @@ class UsuarioController{
             UsuarioModel.editUsuario(id, nome, email, function(err, result){
                 if(err){
                     console.error('Erro ao editar o usuário: ', err);
-                    return res.status(500).json( {error: "Ocorreu um erro ao editar o usuário."});
+                    return res.status(500).json( {error: "Erro ao editar o usuário."});
                 }
 
                 if(result.affectedRows === 0){
@@ -94,7 +94,7 @@ class UsuarioController{
             UsuarioModel.removeUsuario(id, function(err, result){
                 if(err){
                     console.error("Erro ao deletar usuário: ", err);
-                    return res.status(500).json( { error: "Ocorreu um erro ao deletar o usuário." } );
+                    return res.status(500).json( { error: "Erro ao deletar o usuário." } );
                 }
 
                 if(result.affectedRows === 0 ){
