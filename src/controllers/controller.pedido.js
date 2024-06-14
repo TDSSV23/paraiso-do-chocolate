@@ -46,6 +46,50 @@ class PedidoController{
         }
     }
 
+    static updatePedido(req, res) {
+        let id = req.params.id;
+        const dados = req.body;
+
+        try {
+            PedidoModel.updatePedido(id, dados, function(err, result) {
+                if (err) {
+                    console.error("Erro ao atualizar o pedido:", err);
+                    return res.status(500).json({ error: "Erro ao atualizar o pedido." });
+                }
+
+                if (result.affectedRows === 0) {
+                    return res.status(404).json({ message: "Pedido não encontrado." });
+                }
+
+                return res.status(200).json({ message: "Pedido atualizado com sucesso.", data: { id } });
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: "Erro interno no servidor." });
+        }
+    }
+
+    static deletePedido(req, res) {
+        let id = req.params.id;
+
+        try {
+            PedidoModel.deletePedido(id, function(err, result) {
+                if (err) {
+                    console.error("Erro ao deletar o pedido:", err);
+                    return res.status(500).json({ error: "Erro ao deletar o pedido." });
+                }
+
+                if (result.affectedRows === 0) {
+                    return res.status(404).json({ message: "Pedido não encontrado." });
+                }
+
+                return res.status(200).json({ message: "Pedido deletado com sucesso.", data: { id } });
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: "Erro interno no servidor." });
+        }
+    }
 }
 
 export default PedidoController;
