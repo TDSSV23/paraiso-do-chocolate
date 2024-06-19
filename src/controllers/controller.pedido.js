@@ -22,6 +22,10 @@ class PedidoController{
         }
     }
 
+
+    // cadastrar pedido 
+
+    
     static createPedido(req, res){
 
         const p = req.body;
@@ -46,6 +50,8 @@ class PedidoController{
         }
     }
 
+    // Editar pedido
+
     static updatePedido(req, res) {
         let id = req.params.id;
         const dados = req.body;
@@ -68,6 +74,8 @@ class PedidoController{
             res.status(500).json({ error: "Erro interno no servidor." });
         }
     }
+
+    // Deletar pedido
 
     static deletePedido(req, res) {
         let id = req.params.id;
