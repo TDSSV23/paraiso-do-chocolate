@@ -48,16 +48,24 @@ class PedidoModel{
         });
     }
 
-    static deletePedido(id, callback) {
-        let sql = `delete from pedido where id_pedido=?`;
+    static async deletePedido(id, callback) {
+        try {
+            // Deletar itens do pedido primeiro
+            let sql = `delete from pedido_item where id_pedido=?`;
+            await query(sql, [id]);
 
-        con.query(sql, [id], function(err, result) {
-            if (err) {
-                callback(err, null);
-            } else {
-                callback(null, result);
-            }
-        });
+            // Deletar pedido
+            sql = `delete from pedido where id_pedido=?`;
+            con.query(sql, [id], function(err, result) {
+                if (err) {
+                    callback(err, null);
+                } else {
+                    callback(null, result);
+                }
+            });
+        } catch (error) {
+            callback(error, null);
+        }
     }
 }
 
